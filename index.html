@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ساعت دیجیتال نئونی تهران | ☬SHΞN™ Made</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&family=Orbitron:wght@500;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: radial-gradient(circle at center, #0f172a 0%, #020617 100%);
+      color: #fff;
+      font-family: "Vazirmatn", sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .neon-box {
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 3rem 4rem;
+      border-radius: 2rem;
+      box-shadow: 0 0 50px rgba(56, 189, 248, 0.2), inset 0 0 30px rgba(56, 189, 248, 0.1);
+      text-align: center;
+      position: relative;
+    }
+    .badge {
+      display: inline-block;
+      font-size: 0.9rem;
+      color: #38bdf8;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 0 10px rgba(56, 189, 248, 0.8);
+    }
+    .time {
+      font-family: "Orbitron", monospace;
+      font-size: 5.5rem;
+      font-weight: 900;
+      letter-spacing: 4px;
+      color: #e0f2fe;
+      text-shadow: 0 0 20px #38bdf8, 0 0 40px #0284c7, 0 0 80px #0369a1;
+      direction: ltr;
+    }
+    .date {
+      margin-top: 1.5rem;
+      font-size: 1.4rem;
+      color: #94a3b8;
+      font-weight: 500;
+    }
+    .footer {
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      color: #64748b;
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+  <div class="neon-box">
+    <div class="badge">📍 ساعت رسمی ایران - تهران (Asia/Tehran)</div>
+    <div id="clock" class="time">--:--:--</div>
+    <div id="date" class="date">در حال دریافت تاریخ...</div>
+    <div class="footer">⚡ مستقر شده توسط ☬SHΞN™ Autonomous DevOps Agent</div>
+  </div>
+
+  <script>
+    function updateTime() {
+      const now = new Date();
+      const tehranTime = new Intl.DateTimeFormat("en-US", {
+        timeZone: "Asia/Tehran",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: false
+      }).format(now);
+      
+      const tehranDate = new Intl.DateTimeFormat("fa-IR", {
+        timeZone: "Asia/Tehran",
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+      }).format(now);
+
+      document.getElementById("clock").textContent = tehranTime;
+      document.getElementById("date").textContent = tehranDate;
+    }
+    setInterval(updateTime, 1000);
+    updateTime();
+  </script>
+</body>
+</html>
